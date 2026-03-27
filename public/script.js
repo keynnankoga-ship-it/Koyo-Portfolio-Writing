@@ -1,62 +1,96 @@
-const articlesGrid = document.getElementById("articlesGrid");
-const featuredContainer = document.getElementById("featuredArticle");
+// =======================
+// SUBSTACK ARTICLES
+// =======================
 
-async function loadArticles() {
+async function loadSubstack() {
   try {
-    const res = await fetch("/api/articles");
+    const rssURL = "https://api.rss2json.com/v1/api.json?rss_url=https://koyokk.substack.com/feed";
+
+    const res = await fetch(rssURL);
     const data = await res.json();
 
-    const featured = data[0];
+    let html = "";
 
-    featuredContainer.style.backgroundImage = featured.image 
-      ? `url(${featured.image})` 
-      : "none";
-
-    featuredContainer.innerHTML = `
-      <div class="date">${formatDate(featured.date)}</div>
-      <h3>${featured.title}</h3>
-      <p>${featured.preview.substring(0, 180)}...</p>
-      <a href="${featured.link}" target="_blank">Read Full Article →</a>
-    `;
-
-    articlesGrid.innerHTML = "";
-
-    data.slice(1).forEach(item => {
-      articlesGrid.innerHTML += `
-        <a href="${item.link}" class="article-card" target="_blank">
-          <div class="date">${formatDate(item.date)}</div>
-          <h3>${item.title}</h3>
-          <p>${item.preview.substring(0, 120)}...</p>
-        </a>
+    data.items.slice(0, 6).forEach(post => {
+      html += `
+        <div class="card">
+          <img src="${post.thumbnail || 'images/article1.jpg'}" alt="">
+          <h3>${post.title}</h3>
+          <p>${stripHTML(post.description).substring(0, 120)}...</p>
+          <a href="${post.link}" target="_blank">Read →</a>
+        </div>
       `;
     });
 
-  } catch {
-    articlesGrid.innerHTML = "<p>Failed to load articles.</p>";
+    document.getElementById("substack-posts").innerHTML = html;
+
+  } catch (error) {
+    document.getElementById("substack-posts").innerHTML = "<p>Failed to load Substack articles.</p>";
   }
 }
 
-function formatDate(date) {
-  return new Date(date).toDateString();
+
+// =======================
+// CUSTOM ARTICLES (JSON)
+// =======================
+
+async function loadCustomArticles() {
+  try {
+    const res = await fetch("articles.json");
+    const data = await res.json();
+
+    let html = "";
+
+    data.forEach(article => {
+      html += `
+        <div class="card">
+          <img src="${article.image}" alt="">
+          <h3>${article.title}</h3>
+          <p>${article.preview}</p>
+          <a href="${article.link}" target="_blank">Read →</a>
+        </div>
+      `;
+    });
+
+    document.getElementById("custom-articles").innerHTML = html;
+
+  } catch (error) {
+    document.getElementById("custom-articles").innerHTML = "<p>Failed to load articles.</p>";
+  }
 }
 
-loadArticles();
 
-/* CONTACT */
-document.getElementById("contactForm").onsubmit = async (e) => {
-  e.preventDefault();
+// =======================
+// UTIL
+// =======================
 
-  const inputs = e.target.elements;
+function stripHTML(html) {
+  let div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+}
 
-  await fetch("/api/contact", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({
-      name: inputs[0].value,
-      email: inputs[1].value,
-      message: inputs[2].value
-    })
+
+// =======================
+// INIT
+// =======================
+
+loadSubstack();
+loadCustomArticles();
+
+
+// =======================
+// CONTACT (FRONTEND ONLY)
+// =======================
+
+const form = document.getElementById("contactForm");
+
+if (form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    alert("Message sent! (Connect backend later for real emails)");
+
+    form.reset();
   });
-
-  alert("Message sent!");
-};
+}

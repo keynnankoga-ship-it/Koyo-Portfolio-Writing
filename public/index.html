@@ -2,105 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Koyo Koga Portfolio</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="navbar">
-  <div class="nav-left">Koyo Koga</div>
-  <div class="nav-right">
-    <a href="#articles">Work</a>
+  <div class="logo">Koyo Koga</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#projects">ICT</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<div class="container">
+<!-- HERO -->
+<section class="section split hero">
+  <div>
+    <h1 class="big-title">KOYO<br>KOGA</h1>
+    <p class="subtitle">Writer • Thinker • ICT Professional</p>
+  </div>
+  <div>
+    <img src="images/hero.jpg" alt="">
+  </div>
+</section>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h1>Koyo Koga</h1>
-    <p>Writer | Thinker | ICT Professional</p>
+<!-- ABOUT -->
+<section class="section split">
+  <div>
+    <img src="images/about.jpg" alt="">
+  </div>
+  <div>
+    <h1 class="big-title">ABOUT ME</h1>
+    <p>
+      I'm a writer, a programmer, and a curious mind constantly decoding the world...
+      <br><br>
+      I explore politics, geopolitics, and Pan-Africanism with insight and wit.
+      <br><br>
+      Coding, to me, is structured storytelling — logic wrapped in creativity.
+    </p>
+  </div>
+</section>
 
-    <div class="intro">
-      <p>
-        Exploring geopolitics, African socialism, culture, and bold ideas.
-      </p>
+<!-- WRITING -->
+<section class="section" id="work">
+  <h1 class="big-title">WRITING</h1>
+
+  <!-- Substack -->
+  <div id="substack-posts" class="grid"></div>
+
+  <!-- Custom Articles -->
+  <div id="custom-articles" class="grid"></div>
+</section>
+
+<!-- ICT PROJECTS -->
+<section class="section" id="projects">
+  <h1 class="big-title">ICT PROJECTS</h1>
+
+  <div class="grid">
+    <div class="card">
+      <img src="images/project1.jpg">
+      <h3>Portfolio System</h3>
+      <p>Modern responsive portfolio + CMS</p>
     </div>
 
-    <a href="#articles" class="cta">READ MY WORK</a>
+    <div class="card">
+      <img src="images/project2.jpg">
+      <h3>Web Development</h3>
+      <p>Clean UI + performance-focused builds</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section split contact" id="contact">
+  <div>
+    <h1 class="big-title">GET IN TOUCH</h1>
+
+    <p>Email:<br>koyo@email.com</p>
+
+    <div class="socials">
+      <a href="https://twitter.com/KoyoKeynnan"><i class="fab fa-twitter"></i></a>
+      <a href="https://keynn.an.instagram.com"><i class="fab fa-instagram"></i></a>
+      <a href="https://koyokk.substack.com"><i class="fas fa-rss"></i></a>
+      <a href="https://linkedin.com/kenan-koga-ab8620178/"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:koyo@email.com"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
   </div>
 
-  <!-- CONTENT -->
-  <div class="content">
-
-    <!-- ABOUT -->
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-       I'm a writer, a programmer, and a curious mind constantly decoding the world. At the intersection of technology and storytelling, I build ideas that speak and systems that work. I explore politics, geopolitics, and Pan-Africanism with equal parts insight and wit. My writing blends humor with reality, because sometimes truth lands better with a smile. I dissect global affairs not just to inform, but to provoke meaningful thought. <br> <br>  I approach global issues with balance, research, and a strategic lens. <br> <br> Alongside writing, I'm an IT professional specializing in programming and web development. I design and build responsive websites and professional portfolios that merge aesthetics with performance. Coding, to me, is structured storytelling, logic wrapped in creativity. Each function solves a problem; each interface tells a story. I enjoy transforming complex ideas into clean, interactive digital experiences. <br> <br> My blogs span politics, education, society, and culture. I write to educate, challenge, and sometimes gently disturb complacency. Humor remains my secret weapon, especially when confronting serious realities. I believe technology and literature are collaborators, not competitors. One builds the platform; the other fills it with purpose. I'm fascinated by how digital systems influence global conversations. Every website I build reflects precision, usability, and creative intention. Every article I write reflects research, reflection, and personality. I thrive in spaces that demand both analytical rigor and imaginative depth.
-Innovation drives me, curiosity sustains me and Impact motivates me. <br> <br> I enjoy solving problems, whether debugging code or interpreting data. My professional journey is defined by adaptability and interdisciplinary thinking. I move comfortably between policy discussions, programming environments, and creative drafts. I see the world as interconnected be it politically, technologically, or socially. That interconnectedness shapes both my writing and my technical work. This portfolio reflects more than skills, it reflects a philosophy. A philosophy that intellect and imagination can coexist. That humor and seriousness are not opposites. And that storytelling, whether through words, code, or analytics, remains one of the most powerful tools we have.
-      </p>
-    </section>
-
-    <!-- FOCUS -->
-    <section class="focus">
-      <h2>Writing Focus</h2>
-      <ul>
-        <li>Geopolitics</li>
-        <li>African Socialism</li>
-        <li>Cultural Commentary</li>
-        <li>Personal Essays</li>
-        <li>Provocative Thought Pieces</li>
-      </ul>
-    </section>
-
-    <!-- ARTICLES -->
-    <section id="articles">
-      <h2>Previous Work</h2>
-
-      <!-- FEATURED -->
-      <div id="featuredArticle" class="featured-article"></div>
-
-      <!-- GRID -->
-      <div id="articlesGrid" class="articles-grid"></div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <h2>Contact</h2>
-
-      <form id="contactForm">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-
-      <!-- SOCIALS -->
-      <div class="contact-socials">
-        <h3>Find Me</h3>
-        <a href="https://twitter.com/KoyoKeynnan" target="_blank">Twitter</a>
-
-        <a href="https://linkedin.com/kenan-koga-ab8620178/" target="_blank">LinkedIn</a>
-
-        <a href="https://koyokk.substack.com" target="_blank">Substack</a>
-
-<a href="https://keynn.an.instagram.com" target="_blank">Instagram</a>
-
-
-      </div>
-    </section>
-
+  <div>
+    <img src="images/contact.jpg" alt="">
   </div>
-
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
