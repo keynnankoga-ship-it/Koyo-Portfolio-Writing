@@ -1,97 +1,185 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
 }
 
+/* BODY */
 body {
+  font-family: 'Inter', sans-serif;
   background: #f5f5f5;
+  color: #111;
+  line-height: 1.6;
 }
 
-/* Layout */
+/* LAYOUT */
 .container {
   display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar (LEFT) */
+/* SIDEBAR */
 .sidebar {
-  width: 30%;
-  background: #1e1e1e;
+  width: 32%;
+  background: #0d0d0d;
   color: white;
-  padding: 60px 40px;
+  padding: 80px 50px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sidebar h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  letter-spacing: 2px;
 }
 
 .sidebar p {
   color: #aaa;
+  margin-top: 10px;
 }
 
-/* Content (RIGHT) */
+.intro {
+  margin: 30px 0;
+  color: #ccc;
+}
+
+.cta {
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid white;
+  width: fit-content;
+  padding-bottom: 5px;
+}
+
+/* CONTENT */
 .content {
-  width: 70%;
-  padding: 40px;
+  width: 68%;
+  padding: 80px 70px;
 }
 
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 20px;
+/* SECTIONS */
+section {
+  margin-bottom: 80px;
 }
 
-/* Cards */
-.card {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: 0.2s;
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* FOCUS */
+.focus ul {
+  list-style: none;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 8px;
+.focus li {
   margin-bottom: 10px;
 }
 
-.card h3 {
-  margin-bottom: 8px;
+/* ARTICLES */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
 }
 
-.card a {
-  display: inline-block;
-  margin-top: 10px;
+.article-card {
+  background: white;
+  padding: 25px;
+  text-decoration: none;
   color: black;
-  font-weight: bold;
+  border: 1px solid #e5e5e5;
+  transition: 0.3s;
 }
 
-/* Contact */
-.contact {
-  margin-top: 50px;
+.article-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
 }
 
+.article-card img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-bottom: 10px;
+}
+
+.article-card h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+}
+
+.article-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* FEATURED ARTICLE */
+.featured-article {
+  margin-bottom: 50px;
+  padding: 40px;
+  background: #111;
+  color: white;
+}
+
+.featured-article h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.featured-article p {
+  color: #ccc;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.featured-article a {
+  color: white;
+  border-bottom: 1px solid white;
+  text-decoration: none;
+}
+
+/* CONTACT */
 .contact input,
 .contact textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
+  border: 1px solid #ddd;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   background: black;
   color: white;
   border: none;
   cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .content {
+    width: 100%;
+    padding: 40px;
+  }
 }

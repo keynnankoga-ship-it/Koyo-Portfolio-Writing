@@ -1,21 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Koyo Sir Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
 
 <div class="container">
 
   <!-- LEFT PANEL -->
   <div class="sidebar">
-    <h1>Keynnan Koga</h1>
-    <p>Creative Developer</p>
+    <h1>Koyo Sir</h1>
+    <p>Writer | Thinker | Provocateur</p>
+
+    <div class="intro">
+      <p>
+        Exploring geopolitics, African socialism, culture, and bold ideas.
+      </p>
+    </div>
+
+    <a href="#articles" class="cta">READ MY WORK</a>
   </div>
 
   <!-- RIGHT CONTENT -->
   <div class="content">
 
-    <section>
-      <h2>Projects</h2>
-      <div id="grid" class="grid"></div>
+    <!-- ABOUT -->
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        I began my journey writing through difficulty—where every sentence felt forced.
+        Now, words flow effortlessly. My work spans geopolitics, African socialism,
+        cultural critique, and provocative thought.
+      </p>
     </section>
 
+    <!-- WRITING FOCUS -->
+    <section class="focus">
+      <h2>Writing Focus</h2>
+      <ul>
+        <li>Geopolitics</li>
+        <li>African Socialism</li>
+        <li>Cultural Commentary</li>
+        <li>Personal Essays</li>
+        <li>Provocative Thought Pieces</li>
+      </ul>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles">
+  <h2>Previous Work</h2>
+
+  <!-- FEATURED ARTICLE -->
+  <div id="featuredArticle" class="featured-article"></div>
+
+  <!-- OTHER ARTICLES -->
+  <div id="articlesGrid" class="articles-grid"></div>
+</section>
+
+    <!-- CONTACT -->
     <section class="contact">
       <h2>Contact</h2>
       <form id="contactForm">
@@ -32,3 +81,4 @@
 
 <script src="script.js"></script>
 </body>
+</html>

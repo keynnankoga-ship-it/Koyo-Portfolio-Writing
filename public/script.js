@@ -1,26 +1,31 @@
-const grid = document.getElementById("grid");
+/* LOAD ARTICLES FROM BACKEND */
+const articlesGrid = document.getElementById("articlesGrid");
 
-async function loadProjects() {
-  const res = await fetch("/api/projects");
-  const data = await res.json();
+async function loadArticles() {
+  try {
+    const res = await fetch("/api/articles");
+    const data = await res.json();
 
-  grid.innerHTML = "";
+    articlesGrid.innerHTML = "";
 
-  data.forEach(p => {
-    grid.innerHTML += `
-      <div class="card">
-        ${p.image ? `<img src="${p.image}">` : ""}
-        <h3>${p.title}</h3>
-        <p>${p.description}</p>
-        <a href="${p.link}" target="_blank">View</a>
-      </div>
-    `;
-  });
+    data.forEach(item => {
+      articlesGrid.innerHTML += `
+        <a href="${item.link}" class="article-card" target="_blank">
+          <div class="icon">📝</div>
+          <h3>${item.title}</h3>
+          <p>${item.preview.substring(0, 120)}...</p>
+        </a>
+      `;
+    });
+
+  } catch (err) {
+    articlesGrid.innerHTML = "<p>Failed to load articles.</p>";
+  }
 }
 
-loadProjects();
+loadArticles();
 
-/* Contact */
+/* CONTACT FORM */
 document.getElementById("contactForm").onsubmit = async (e) => {
   e.preventDefault();
 
