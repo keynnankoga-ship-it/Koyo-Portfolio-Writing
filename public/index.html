@@ -1,28 +1,34 @@
 <body>
 
-<header>
-  <h1>Koyo Kenan Koga</h1>
-  <p>Writter</p>
-</header>
+<div class="container">
 
-<section class="projects">
-  <h2>Projects</h2>
-  <div id="grid"></div>
-</section>
+  <!-- LEFT PANEL -->
+  <div class="sidebar">
+    <h1>Keynnan Koga</h1>
+    <p>Creative Developer</p>
+  </div>
 
-<section class="contact">
-  <h2>Contact Me</h2>
-  <form id="contactForm">
-    <input placeholder="Name" required>
-    <input placeholder="Email" required>
-    <textarea placeholder="Message"></textarea>
-    <button>Send</button>
-  </form>
-</section>
+  <!-- RIGHT CONTENT -->
+  <div class="content">
 
-<footer>
-  <p>© 2026 Koyo Koga. All rights reserved.</p>
-</footer>
+    <section>
+      <h2>Projects</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <input placeholder="Name" required>
+        <input placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button>Send</button>
+      </form>
+    </section>
+
+  </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>

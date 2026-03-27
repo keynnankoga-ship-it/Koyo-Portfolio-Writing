@@ -1,43 +1,58 @@
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
   background: #f5f5f5;
-  color: #333;
 }
 
-/* Header */
-header {
-  background: #222;
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar (LEFT) */
+.sidebar {
+  width: 30%;
+  background: #1e1e1e;
   color: white;
-  padding: 20px;
-  text-align: center;
+  padding: 60px 40px;
 }
 
-/* Hero */
-.hero {
+.sidebar h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  color: #aaa;
+}
+
+/* Content (RIGHT) */
+.content {
+  width: 70%;
   padding: 40px;
-  text-align: center;
-  background: white;
 }
 
-/* Projects */
-.projects {
-  padding: 40px;
-}
-
+/* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
 }
 
-/* Card */
+/* Cards */
 .card {
   background: white;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.2s;
 }
 
 .card:hover {
@@ -46,17 +61,37 @@ header {
 
 .card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .card h3 {
+  margin-bottom: 8px;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+/* Contact */
+.contact {
+  margin-top: 50px;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
   margin: 10px 0;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #222;
+button {
+  padding: 10px 20px;
+  background: black;
   color: white;
+  border: none;
+  cursor: pointer;
 }
