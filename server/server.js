@@ -16,11 +16,8 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
-/* ROUTES */
-app.use("/api/auth", require("./routes/auth"));
 app.use("/api/contact", require("./routes/contact"));
 
-/* SUBSTACK ARTICLES */
 app.get("/api/articles", async (req, res) => {
   try {
     const feed = await parser.parseURL("https://koyokk.substack.com/feed");
@@ -28,7 +25,9 @@ app.get("/api/articles", async (req, res) => {
     const articles = feed.items.slice(0, 6).map(item => ({
       title: item.title,
       link: item.link,
-      preview: item.contentSnippet
+      preview: item.contentSnippet,
+      date: item.pubDate,
+      image: item.enclosure?.url || null
     }));
 
     res.json(articles);

@@ -12,9 +12,18 @@
 
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">Koyo Sir</div>
+  <div class="nav-right">
+    <a href="#articles">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
 <div class="container">
 
-  <!-- LEFT PANEL -->
+  <!-- SIDEBAR -->
   <div class="sidebar">
     <h1>Koyo Sir</h1>
     <p>Writer | Thinker | Provocateur</p>
@@ -28,7 +37,7 @@
     <a href="#articles" class="cta">READ MY WORK</a>
   </div>
 
-  <!-- RIGHT CONTENT -->
+  <!-- CONTENT -->
   <div class="content">
 
     <!-- ABOUT -->
@@ -41,7 +50,7 @@
       </p>
     </section>
 
-    <!-- WRITING FOCUS -->
+    <!-- FOCUS -->
     <section class="focus">
       <h2>Writing Focus</h2>
       <ul>
@@ -55,29 +64,43 @@
 
     <!-- ARTICLES -->
     <section id="articles">
-  <h2>Previous Work</h2>
+      <h2>Previous Work</h2>
 
-  <!-- FEATURED ARTICLE -->
-  <div id="featuredArticle" class="featured-article"></div>
+      <!-- FEATURED -->
+      <div id="featuredArticle" class="featured-article"></div>
 
-  <!-- OTHER ARTICLES -->
-  <div id="articlesGrid" class="articles-grid"></div>
-</section>
+      <!-- GRID -->
+      <div id="articlesGrid" class="articles-grid"></div>
+    </section>
 
     <!-- CONTACT -->
-    <section class="contact">
+    <section class="contact" id="contact">
       <h2>Contact</h2>
+
       <form id="contactForm">
-        <input placeholder="Name" required>
-        <input placeholder="Email" required>
-        <textarea placeholder="Message"></textarea>
-        <button>Send</button>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
       </form>
+
+      <!-- SOCIALS -->
+      <div class="contact-socials">
+        <h3>Find Me</h3>
+        <a href="https://twitter.com/YOURHANDLE" target="_blank">Twitter</a>
+        <a href="https://linkedin.com/in/YOURPROFILE" target="_blank">LinkedIn</a>
+        <a href="https://koyo.substack.com" target="_blank">Substack</a>
+      </div>
     </section>
 
   </div>
 
 </div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Koyo Sir — Crafted with words, not noise.</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
