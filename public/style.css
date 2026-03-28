@@ -84,52 +84,58 @@ body {
   color: #555;
 }
 
-/* GRID */
+/* 🔥 ARTICLE LIST (STACKED HORIZONTAL ROWS) */
 .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
 }
 
 /* CARD BASE */
 .card {
   background: white;
-  transition: 0.3s ease;
-  overflow: hidden;
+  transition: 0.25s ease;
+  border: 1px solid #eee;
 }
 
-/* 🔥 HORIZONTAL CARD (MAIN FIX) */
+/* 🔥 CLEAN HORIZONTAL CARD */
 .card.horizontal {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 25px;
+  display: flex;
   align-items: center;
-  padding: 15px;
+  gap: 18px;
+  padding: 12px 15px;
 }
 
-/* IMAGE */
+/* 🔥 IMAGE FIX (KEY) */
 .card.horizontal img {
-  width: 100%;
-  height: 160px;
+  width: 110px;       /* smaller */
+  height: 90px;       /* consistent */
   object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 3px;
 }
 
-/* CONTENT */
+/* TEXT AREA */
+.card-content {
+  flex: 1;
+}
+
+/* TEXT */
 .card-content h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .card-content p {
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .card-content a {
-  font-size: 14px;
+  font-size: 13px;
   text-decoration: none;
   border-bottom: 1px solid black;
   color: black;
@@ -137,13 +143,12 @@ body {
 
 /* HOVER */
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
 }
 
-/* IMAGES */
+/* GLOBAL IMAGE FIX */
 img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
   display: block;
 }
 
@@ -157,11 +162,11 @@ img {
 .socials {
   margin-top: 30px;
   display: flex;
-  gap: 25px;
+  gap: 20px;
 }
 
 .socials a {
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   transition: 0.3s;
 }
@@ -178,11 +183,11 @@ img {
   color: #777;
 }
 
-/* 🔥 ANIMATIONS */
+/* ANIMATIONS */
 .fade-in {
   opacity: 0;
-  transform: translateY(40px);
-  transition: 0.6s ease;
+  transform: translateY(30px);
+  transition: 0.5s ease;
 }
 
 .fade-in.show {
@@ -197,16 +202,14 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
   .card.horizontal {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .card.horizontal img {
-    height: 200px;
+    width: 100%;
+    height: 180px;
   }
 
   .big-title {
