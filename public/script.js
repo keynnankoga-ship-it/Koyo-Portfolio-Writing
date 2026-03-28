@@ -3,15 +3,17 @@
 // =======================
 
 async function loadSubstack() {
-  try {
-    const rssURL = "https://api.rss2json.com/v1/api.json?rss_url=https://koyokk.substack.com/feed";
+  const container = document.getElementById("substack-posts");
 
-    const res = await fetch(rssURL);
+  try {
+    const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://koyokk.substack.com/feed");
     const data = await res.json();
+
+    if (!data.items) throw new Error("No data");
 
     let html = "";
 
-    data.items.slice(0, 6).forEach(post => {
+    data.items.forEach(post => {
       html += `
         <div class="card">
           <img src="${post.thumbnail || 'images/article1.jpg'}" alt="">
@@ -22,13 +24,19 @@ async function loadSubstack() {
       `;
     });
 
-    document.getElementById("substack-posts").innerHTML = html;
+    container.innerHTML = html;
 
   } catch (error) {
-    document.getElementById("substack-posts").innerHTML = "<p>Failed to load Substack articles.</p>";
+    console.error("Substack error:", error);
+
+    container.innerHTML = `
+      <p>⚠️ Unable to load articles.</p>
+      <a href="https://koyokk.substack.com" target="_blank">
+        View on Substack →
+      </a>
+    `;
   }
 }
-
 
 // =======================
 // CUSTOM ARTICLES (JSON)
