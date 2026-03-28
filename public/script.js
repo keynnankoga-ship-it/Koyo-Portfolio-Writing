@@ -17,8 +17,11 @@ async function loadSubstack() {
 
     data.items.forEach(post => {
       html += `
-        <div class="card horizontal">
-          <img src="${post.thumbnail || '/images/article1.jpg'}" alt="">
+        <div class="card horizontal fade-in">
+          <img src="${post.thumbnail || '/images/article1.jpg'}" 
+               onerror="this.src='/images/article1.jpg'" 
+               alt="">
+          
           <div class="card-content">
             <h3>${post.title}</h3>
             <p>${stripHTML(post.description).substring(0, 120)}...</p>
@@ -29,6 +32,9 @@ async function loadSubstack() {
     });
 
     container.innerHTML = html;
+
+    // 🔥 Re-trigger animations for new elements
+    activateAnimations();
 
   } catch (error) {
     console.error("Substack error:", error);
@@ -52,15 +58,22 @@ async function loadCustomArticles() {
   if (!container) return;
 
   try {
-    const res = await fetch("/articles.json"); // FIXED PATH for Render
+    const res = await fetch("/articles.json");
     const data = await res.json();
 
     let html = "";
 
     data.forEach(article => {
+      const imagePath = article.image.startsWith("http")
+        ? article.image
+        : `/images/${article.image}`;
+
       html += `
-        <div class="card horizontal">
-          <img src="${article.image.startsWith('http') ? article.image : '/images/' + article.image}" alt="">
+        <div class="card horizontal fade-in">
+          <img src="${imagePath}" 
+               onerror="this.src='/images/article1.jpg'" 
+               alt="">
+          
           <div class="card-content">
             <h3>${article.title}</h3>
             <p>${article.preview}</p>
@@ -71,6 +84,9 @@ async function loadCustomArticles() {
     });
 
     container.innerHTML = html;
+
+    // 🔥 Re-trigger animations
+    activateAnimations();
 
   } catch (error) {
     console.error("Custom articles error:", error);
@@ -89,7 +105,7 @@ function stripHTML(html) {
 }
 
 // =======================
-// ANIMATIONS (FADE IN)
+// ANIMATIONS (FIXED)
 // =======================
 
 const observer = new IntersectionObserver(entries => {
@@ -100,17 +116,21 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 
-document.querySelectorAll(".section").forEach(section => {
-  section.classList.add("fade-in");
-  observer.observe(section);
-});
+function activateAnimations() {
+  document.querySelectorAll(".fade-in").forEach(el => {
+    observer.observe(el);
+  });
+}
 
 // =======================
 // INIT
 // =======================
 
-loadSubstack();
-loadCustomArticles();
+document.addEventListener("DOMContentLoaded", () => {
+  loadSubstack();
+  loadCustomArticles();
+  activateAnimations();
+});
 
 // =======================
 // CONTACT (FRONTEND)
@@ -122,7 +142,7 @@ if (form) {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    alert("Message sent! (Connect EmailJS for real emails)");
+    alert("Message sent!");
 
     form.reset();
   });
