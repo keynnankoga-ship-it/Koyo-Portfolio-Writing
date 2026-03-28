@@ -58,7 +58,7 @@ async function loadCustomArticles() {
   if (!container) return;
 
   try {
-    const res = await fetch("/articles.json");
+    const res = await fetch("/api/articles");
     const data = await res.json();
 
     let html = "";
@@ -69,11 +69,8 @@ async function loadCustomArticles() {
         : `/images/${article.image}`;
 
       html += `
-        <div class="card horizontal fade-in">
-          <img src="${imagePath}" 
-               onerror="this.src='/images/article1.jpg'" 
-               alt="">
-          
+        <div class="card horizontal">
+          <img src="${imagePath}">
           <div class="card-content">
             <h3>${article.title}</h3>
             <p>${article.preview}</p>
@@ -85,11 +82,7 @@ async function loadCustomArticles() {
 
     container.innerHTML = html;
 
-    // 🔥 Re-trigger animations
-    activateAnimations();
-
-  } catch (error) {
-    console.error("Custom articles error:", error);
+  } catch {
     container.innerHTML = "<p>Failed to load articles.</p>";
   }
 }

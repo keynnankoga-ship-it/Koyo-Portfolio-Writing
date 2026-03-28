@@ -208,3 +208,11 @@ img {
     padding: 80px 6%;
   }
 }
+
+/* 🔥 FORCE FIX (OVERRIDE EVERYTHING) */
+.card img {
+  width: 110px !important;
+  height: 90px !important;
+  object-fit: cover !important;
+  flex-shrink: 0;
+}
