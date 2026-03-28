@@ -34,22 +34,6 @@ body {
   text-decoration: none;
   color: #111;
   font-size: 14px;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0%;
-  height: 1px;
-  background: black;
-  transition: 0.3s;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
 }
 
 /* SECTIONS */
@@ -65,7 +49,6 @@ body {
   align-items: center;
 }
 
-/* HERO */
 .hero {
   padding-top: 150px;
 }
@@ -75,7 +58,6 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 80px;
   line-height: 0.95;
-  letter-spacing: -2px;
 }
 
 .subtitle {
@@ -84,43 +66,39 @@ body {
   color: #555;
 }
 
-/* 🔥 FORCE HORIZONTAL STACK */
+/* 🔥 MASTER LAYOUT SYSTEM */
 .grid {
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   margin-top: 40px;
 }
 
-/* 🔥 UNIVERSAL CARD FIX */
-.card,
-#substack-posts .card {
-  display: flex !important;
-  flex-direction: row !important;
+/* 🔥 UNIVERSAL CARD SYSTEM */
+.card {
+  display: flex;
   align-items: center;
   gap: 15px;
   background: white;
-  padding: 12px;
+  padding: 12px 15px;
   border: 1px solid #eee;
   transition: 0.25s ease;
 }
 
-/* 🔥 IMAGE SIZE FIX (THIS SOLVES BIG ICONS) */
-.card img,
-#substack-posts .card img {
-  width: 100px !important;
-  height: 80px !important;
+/* 🔥 IMAGE CONTROL (FINAL FIX) */
+.card img {
+  width: 100px;
+  height: 80px;
   object-fit: cover;
   flex-shrink: 0;
   border-radius: 4px;
 }
 
-/* 🔥 TEXT FIX */
+/* TEXT */
 .card-content {
   flex: 1;
 }
 
-/* TEXT */
 .card-content h3 {
   font-family: 'Playfair Display', serif;
   font-size: 18px;
@@ -130,7 +108,7 @@ body {
 .card-content p {
   font-size: 13px;
   color: #555;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .card-content a {
@@ -145,7 +123,13 @@ body {
   transform: translateY(-3px);
 }
 
-/* GLOBAL IMAGE CONTROL */
+/* 🔥 REMOVE OLD BROKEN SYSTEMS */
+.work-item,
+.work-icon {
+  all: unset;
+}
+
+/* GLOBAL IMAGE FIX */
 img {
   max-width: 100%;
   display: block;
@@ -157,28 +141,26 @@ img {
   color: #555;
 }
 
-/* SOCIAL ICONS */
+/* SOCIALS */
 .socials {
-  margin-top: 30px;
   display: flex;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .socials a {
   font-size: 18px;
   color: black;
-  transition: 0.3s;
 }
 
 .socials a:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* FOOTER */
 .footer {
   text-align: center;
   padding: 40px;
-  font-size: 14px;
   color: #777;
 }
 
@@ -189,15 +171,14 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .card,
-  #substack-posts .card {
-    flex-direction: column !important;
+  .card {
+    flex-direction: column;
     align-items: flex-start;
   }
 
   .card img {
-    width: 100% !important;
-    height: 180px !important;
+    width: 100%;
+    height: 180px;
   }
 
   .big-title {
@@ -207,12 +188,4 @@ img {
   .section {
     padding: 80px 6%;
   }
-}
-
-/* 🔥 FORCE FIX (OVERRIDE EVERYTHING) */
-.card img {
-  width: 110px !important;
-  height: 90px !important;
-  object-fit: cover !important;
-  flex-shrink: 0;
 }
