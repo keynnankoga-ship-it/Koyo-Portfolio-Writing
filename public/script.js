@@ -5,6 +5,8 @@
 async function loadSubstack() {
   const container = document.getElementById("substack-posts");
 
+  if (!container) return;
+
   try {
     const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://koyokk.substack.com/feed");
     const data = await res.json();
@@ -15,11 +17,13 @@ async function loadSubstack() {
 
     data.items.forEach(post => {
       html += `
-        <div class="card">
-          <img src="${post.thumbnail || 'images/article1.jpg'}" alt="">
-          <h3>${post.title}</h3>
-          <p>${stripHTML(post.description).substring(0, 120)}...</p>
-          <a href="${post.link}" target="_blank">Read →</a>
+        <div class="card horizontal">
+          <img src="${post.thumbnail || '/images/article1.jpg'}" alt="">
+          <div class="card-content">
+            <h3>${post.title}</h3>
+            <p>${stripHTML(post.description).substring(0, 120)}...</p>
+            <a href="${post.link}" target="_blank">Read →</a>
+          </div>
         </div>
       `;
     });
@@ -32,7 +36,7 @@ async function loadSubstack() {
     container.innerHTML = `
       <p>⚠️ Unable to load articles.</p>
       <a href="https://koyokk.substack.com" target="_blank">
-        View on Substack →
+        View all on Substack →
       </a>
     `;
   }
@@ -43,41 +47,63 @@ async function loadSubstack() {
 // =======================
 
 async function loadCustomArticles() {
+  const container = document.getElementById("custom-articles");
+
+  if (!container) return;
+
   try {
-    const res = await fetch("articles.json");
+    const res = await fetch("/articles.json"); // FIXED PATH for Render
     const data = await res.json();
 
     let html = "";
 
     data.forEach(article => {
       html += `
-        <div class="card">
-          <img src="${article.image}" alt="">
-          <h3>${article.title}</h3>
-          <p>${article.preview}</p>
-          <a href="${article.link}" target="_blank">Read →</a>
+        <div class="card horizontal">
+          <img src="${article.image.startsWith('http') ? article.image : '/images/' + article.image}" alt="">
+          <div class="card-content">
+            <h3>${article.title}</h3>
+            <p>${article.preview}</p>
+            <a href="${article.link}" target="_blank">Read →</a>
+          </div>
         </div>
       `;
     });
 
-    document.getElementById("custom-articles").innerHTML = html;
+    container.innerHTML = html;
 
   } catch (error) {
-    document.getElementById("custom-articles").innerHTML = "<p>Failed to load articles.</p>";
+    console.error("Custom articles error:", error);
+    container.innerHTML = "<p>Failed to load articles.</p>";
   }
 }
-
 
 // =======================
 // UTIL
 // =======================
 
 function stripHTML(html) {
-  let div = document.createElement("div");
+  const div = document.createElement("div");
   div.innerHTML = html;
   return div.textContent || div.innerText || "";
 }
 
+// =======================
+// ANIMATIONS (FADE IN)
+// =======================
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".section").forEach(section => {
+  section.classList.add("fade-in");
+  observer.observe(section);
+});
 
 // =======================
 // INIT
@@ -86,9 +112,8 @@ function stripHTML(html) {
 loadSubstack();
 loadCustomArticles();
 
-
 // =======================
-// CONTACT (FRONTEND ONLY)
+// CONTACT (FRONTEND)
 // =======================
 
 const form = document.getElementById("contactForm");
@@ -97,7 +122,7 @@ if (form) {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    alert("Message sent! (Connect backend later for real emails)");
+    alert("Message sent! (Connect EmailJS for real emails)");
 
     form.reset();
   });
