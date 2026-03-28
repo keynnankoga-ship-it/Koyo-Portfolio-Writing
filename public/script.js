@@ -83,7 +83,7 @@ async function loadCustomArticles() {
     container.innerHTML = html;
 
   } catch {
-    container.innerHTML = "<p>Failed to load articles.</p>";
+    container.innerHTML = "<p></p>";
   }
 }
 
