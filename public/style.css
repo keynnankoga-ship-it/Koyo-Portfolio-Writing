@@ -66,15 +66,27 @@ body {
   color: #555;
 }
 
-/* 🔥 MASTER LAYOUT SYSTEM */
+/* 🔥 HORIZONTAL SCROLL SYSTEM */
 .grid {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;        /* ✅ horizontal */
   gap: 20px;
   margin-top: 40px;
+  overflow-x: auto;           /* ✅ scroll sideways */
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
 }
 
-/* 🔥 UNIVERSAL CARD SYSTEM */
+/* Hide scrollbar (optional clean look) */
+.grid::-webkit-scrollbar {
+  display: none;
+}
+.grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 🔥 CARD SYSTEM */
 .card {
   display: flex;
   align-items: center;
@@ -83,9 +95,14 @@ body {
   padding: 12px 15px;
   border: 1px solid #eee;
   transition: 0.25s ease;
+
+  min-width: 300px;          /* ✅ key for horizontal layout */
+  flex: 0 0 auto;            /* ✅ prevents shrinking */
+  scroll-snap-align: start;
+  border-radius: 6px;
 }
 
-/* 🔥 IMAGE CONTROL (FINAL FIX) */
+/* IMAGE */
 .card img {
   width: 100px;
   height: 80px;
@@ -123,7 +140,7 @@ body {
   transform: translateY(-3px);
 }
 
-/* 🔥 REMOVE OLD BROKEN SYSTEMS */
+/* REMOVE OLD SYSTEMS */
 .work-item,
 .work-icon {
   all: unset;
