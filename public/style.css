@@ -194,3 +194,68 @@ img {
     font-size: 42px;
   }
 }
+
+/* ========================= */
+/* ✍️ WRITING SECTION STYLE */
+/* ========================= */
+
+.writing-section {
+  background: #fafafa;
+}
+
+.writing-section .big-title {
+  opacity: 0.9;
+}
+
+/* Softer, editorial cards */
+.writing-section .card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-shadow: none;
+}
+
+.writing-section .card:hover {
+  transform: translateY(-4px);
+}
+
+/* Subtle typography */
+.writing-section .card-content h3 {
+  font-size: 17px;
+}
+
+.writing-section .card-content p {
+  color: #666;
+}
+
+/* ========================= */
+/* 💻 PROJECTS SECTION STYLE */
+/* ========================= */
+
+.projects-section {
+  background: #f0f2f5;
+}
+
+.projects-section .big-title {
+  letter-spacing: 1px;
+}
+
+/* Stronger, tech-style cards */
+.projects-section .card {
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.projects-section .card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Stronger emphasis */
+.projects-section .card-content h3 {
+  font-size: 18px;
+}
+
+.projects-section .card-content p {
+  color: #444;
+}
